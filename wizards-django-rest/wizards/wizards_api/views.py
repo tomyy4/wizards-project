@@ -1,6 +1,6 @@
 from rest_framework import generics, permissions
 from django.contrib.auth.models import User
-from .models import Wizard, House, Founder, Subject, Spell
+from app.models import Wizard, House, Founder, Subject, Spell
 from .serializers import WizardSerializer, HouseSerializer, UserSerializer, FounderSerializer, SubjectSerializer, \
     SpellSerializer
 
@@ -29,7 +29,7 @@ class WizardDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = WizardSerializer
 
 
-class HouseList(generics.ListCreateAPIView):
+class HouseList(generics.ListAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = House.objects.all()
     serializer_class = HouseSerializer

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Wizard, House, Founder, Subject, Spell
+from app.models import Wizard, House, Founder, Subject, Spell
 from django.contrib.auth.models import User
 
 
@@ -25,7 +25,10 @@ class HouseSerializer(serializers.ModelSerializer):
         fields = ['id', 'name','students']
 
 
-class WizardSerializer(serializers.ModelSerializer):
+class WizardSerializer(serializers.Serializer):
+    name = serializers.CharField()
+    house = serializers.CharField()
+
     class Meta:
         model = Wizard
         fields = ['id', 'name','house']
